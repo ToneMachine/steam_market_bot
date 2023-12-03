@@ -51,7 +51,7 @@ for num in range(143):
             wait_for(By.ID,'iteminfo1_item_scrap_link')
             driver.find_element(By.ID,'iteminfo1_item_scrap_link').click() # turns items into gems
 
-        elif i == ' Trading Card': # input(whats items to sell)
+        elif i == ' Trading Card': # input(what items to sell)
 
             # gets price of item
             driver.find_element(By.PARTIAL_LINK_TEXT,'Sell').click() # sell button
