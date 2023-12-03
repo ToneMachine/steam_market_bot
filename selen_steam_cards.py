@@ -35,7 +35,7 @@ time.sleep(2)
 tos = True
 css_sel = '#inventory_76561198213304301_753_6 > div:nth-child(1) > div:nth-child(2)'
 
-for num in range(143):
+while True:
     wait_for(By.CSS_SELECTOR,css_sel)
     driver.find_element(By.CSS_SELECTOR,css_sel).click()
     wait_for(By.CLASS_NAME,'item_market_actions') 
@@ -46,10 +46,10 @@ for num in range(143):
     # checks tags
     for i in tags:
         
-        if i == ' Not Marketable':
+        # if i == ' Not Marketable':
 
-            wait_for(By.ID,'iteminfo1_item_scrap_link')
-            driver.find_element(By.ID,'iteminfo1_item_scrap_link').click() # turns items into gems
+        #     wait_for(By.ID,'iteminfo1_item_scrap_link')
+        #     driver.find_element(By.ID,'iteminfo1_item_scrap_link').click() # turns items into gems
 
         elif i == ' Trading Card': # input(what items to sell)
 
