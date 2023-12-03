@@ -13,9 +13,9 @@ driver.maximize_window()
 # login
 time.sleep(2)
 user = driver.find_element(By.CLASS_NAME,"newlogindialog_TextInput_2eKVn")
-user.send_keys("brickjohson")
+user.send_keys("#user")
 password = driver.find_element(By.XPATH,'//*[@id="responsive_page_template_content"]/div[3]/div[1]/div/div/div/div[2]/div/form/div[2]/input')
-password.send_keys("Honda93Lube!",Keys.ENTER)
+password.send_keys("#password",Keys.ENTER)
 time.sleep(30)
 
 # inventory
