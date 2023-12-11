@@ -42,8 +42,4 @@ item_hash_name = url_encoder(item_name_inquiry)
 market_listing = get_market_listings(app_id_inquiry,item_hash_name)
 lowest_price = market_listing.get('lowest_price')
 
-if lowest_price == None:
-    lowest_price = '0.03'
-
-
 print(lowest_price)
