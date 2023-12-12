@@ -10,6 +10,9 @@ driver = webdriver.Chrome(service=ChromeService())
 url = 'https://store.steampowered.com/login/?steamtv'
 tos = True
 
+account_name = input('account name:')
+account_password = input('account password:')
+
 # waits for element to load
 def wait_for(element,elem_name,time = 30):
     WebDriverWait(driver,time).until(EC.presence_of_element_located((element,elem_name)))
@@ -21,9 +24,10 @@ driver.maximize_window()
 # login
 time.sleep(2)
 user = driver.find_element(By.CLASS_NAME,'newlogindialog_TextInput_2eKVn')
-user.send_keys(user name) # input(user name)
+user.send_keys(account_name) # input(user name)
+
 password = driver.find_element(By.XPATH,'//*[@id="responsive_page_template_content"]/div[3]/div[1]/div/div/div/div[2]/div/form/div[2]/input')
-password.send_keys(password,Keys.ENTER) # input(password)
+password.send_keys(account_password,Keys.ENTER) # input(password)
 
 # inventory
 wait_for(By.XPATH,'//*[@id="global_header"]/div/div[2]/a[3]',180)
