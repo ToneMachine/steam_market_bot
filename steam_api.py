@@ -1,7 +1,7 @@
 import requests
 
-app_id_inquiry = '232090'
-item_name_inquiry = 'Horzine Supply Crate | Series #9'
+app_id_inquiry = '730'
+item_name_inquiry = 'Snakebite Case'
 
 # encodes the url
 def url_encoder(original_string):
@@ -42,4 +42,4 @@ item_hash_name = url_encoder(item_name_inquiry)
 market_listing = get_market_listings(app_id_inquiry,item_hash_name)
 lowest_price = market_listing.get('lowest_price')
 
-print(lowest_price)
+print(item_name_inquiry,lowest_price)
