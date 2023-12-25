@@ -1,7 +1,7 @@
 import requests
 
 app_id_inquiry = '730'
-item_name_inquiry = 'Snakebite Case'
+item_name_inquiry = 'Chroma 3 Case'
 
 # encodes the url
 def url_encoder(original_string):
