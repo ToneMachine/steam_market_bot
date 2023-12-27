@@ -41,22 +41,10 @@ def get_market_listings(app_id,market_hash_name):
     return data
 
 for item_name in case_list:
-
-    try:
     
-        item_hash_name = url_encoder(item_name)
-        market_listing = get_market_listings(app_id_inquiry,item_hash_name)
+    item_hash_name = url_encoder(item_name)
+    market_listing = get_market_listings(app_id_inquiry,item_hash_name)
+    time.sleep(3)
+    lowest_price = market_listing.get('lowest_price')
 
-        lowest_price = market_listing.get('lowest_price')
-
-        print(item_name,lowest_price)
-
-    except:
-
-        item_hash_name = url_encoder(item_name)
-        time.sleep(5)
-        market_listing = get_market_listings(app_id_inquiry,item_hash_name)
-
-        lowest_price = market_listing.get('lowest_price')
-
-        print(item_name,lowest_price)        
+    print(item_name.ljust(35),lowest_price)
