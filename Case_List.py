@@ -7,30 +7,30 @@ case_list = case_list.split(',')
 app_id_inquiry = '730'
 
 # encodes the url
-def url_encoder(original_string):
+def url_encoder(string):
 
     # Replace each space with %20
     characters_to_replace = ' '
     replacement_char = '%20'
 
     for char in characters_to_replace:
-        original_string = original_string.replace(char, replacement_char)
+        string = string.replace(char, replacement_char)
 
     # Replace each "|" with %C7
     characters_to_replace = '|'
     replacement_char = '%C7'
 
     for char in characters_to_replace:
-        original_string = original_string.replace(char, replacement_char)
+        string = string.replace(char, replacement_char)
 
     # Replace each "&" with %26
     characters_to_replace = '&'
     replacement_char = '%26'
 
     for char in characters_to_replace:
-        original_string = original_string.replace(char, replacement_char)
+        string = string.replace(char, replacement_char)
 
-    return original_string
+    return string
 
 def get_market_listings(app_id,market_hash_name):
     
