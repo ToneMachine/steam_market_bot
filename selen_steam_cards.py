@@ -84,7 +84,4 @@ while True:
             driver.find_element(By.PARTIAL_LINK_TEXT,'OK').click()
             time.sleep(3)
 
-        else:
-            driver.close()
-
 time.sleep(300)
