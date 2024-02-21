@@ -9,44 +9,45 @@ from setting import password
 import time
 import requests
 
+account_name = account
+account_password = password
+
 driver = webdriver.Chrome(service=ChromeService())
 url = 'https://store.steampowered.com/login/?steamtv'
 tos = True
 page = 1
 pos = 1
 
-account_name = account
-account_password = password
-
 # waits for element to load
 def wait_for(element,elem_name,time = 30):
     WebDriverWait(driver,time).until(EC.presence_of_element_located((element,elem_name)))
 
 # gets starting price for item
-def get_market_listings(string):
+def get_market_price(item_name):
 
     # Replace each space with %20
     characters_to_replace = ' '
     replacement_char = '%20'
 
     for char in characters_to_replace:
-        string = string.replace(char, replacement_char)
+        item_name = item_name.replace(char, replacement_char)
 
     # Replace each "|" with %C7
     characters_to_replace = '|'
     replacement_char = '%C7'
 
     for char in characters_to_replace:
-        string = string.replace(char, replacement_char)
+        item_name = item_name.replace(char, replacement_char)
 
     # Replace each "&" with %26
     characters_to_replace = '&'
     replacement_char = '%26'
 
     for char in characters_to_replace:
-        string = string.replace(char, replacement_char)
+        item_name = item_name.replace(char, replacement_char)
     
-    url = f'http://steamcommunity.com/market/priceoverview/?currency=1&appid=730&market_hash_name={string}'
+    # json
+    url = f'http://steamcommunity.com/market/priceoverview/?currency=1&appid=730&market_hash_name={item_name}'
     response = requests.get(url)
     data = response.json()
 
