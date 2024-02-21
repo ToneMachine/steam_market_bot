@@ -71,11 +71,22 @@ driver.find_element(By.XPATH,'//*[@id="friendactivity_right_column"]/div/div[3]/
 driver.find_element(By.ID,'inventory_link_730').click() # input(which game)
 time.sleep(2)
 
+# filters
+driver.find_element(By.ID,'filter_tag_show').click()
+wait_for(By.ID,'tag_filter_730_2_Type_CSGO_Type_WeaponCase')
+driver.find_element(By.ID,'tag_filter_730_2_Type_CSGO_Type_WeaponCase').click()
+
 # sells inventory
 while True:
+
+    # searching for index of case
+    try:
+        time.sleep(1)
+        driver.find_element(By.CSS_SELECTOR,f'#inventory_76561198213304301_730_2 > div:nth-child({page}) > div:nth-child({pos})').click()
     
-    time.sleep(2)
-    driver.find_element(By.CSS_SELECTOR,f'#inventory_76561198213304301_730_2 > div:nth-child({page}) > div:nth-child({pos})').click()
+    except:
+        pos += 1
+
     wait_for(By.ID,'iteminfo1_item_tags_content') 
     tags = driver.find_element(By.ID,'iteminfo1_item_tags_content').text.split(',')
 
@@ -83,8 +94,8 @@ while True:
         
         # gets price of item
         time.sleep(2)
-        case = driver.find_element(By.ID,'iteminfo1_item_name').text
-        price = get_market_listings(case)
+        price = driver.find_element(By.XPATH,'//*[@id="iteminfo1_item_market_actions"]/div/div[2]').text
+        price = price[14:18]
         wait_for(By.PARTIAL_LINK_TEXT,'Sell')
         driver.find_element(By.PARTIAL_LINK_TEXT,'Sell').click()
         sell = driver.find_element(By.ID,'market_sell_buyercurrency_input')
@@ -101,14 +112,9 @@ while True:
         driver.find_element(By.PARTIAL_LINK_TEXT,'OK').click()
         time.sleep(3)
 
-    # updates next item
-    else:
-        pos += 1
-        
-        # next page
-        if pos > 25:
-            page += 1
-            pos = 1
-            driver.find_element(By.ID,'pagebtn_next').click()
+        # filters
+        driver.find_element(By.ID,'filter_tag_show').click()
+        wait_for(By.ID,'tag_filter_730_2_Type_CSGO_Type_WeaponCase')
+        driver.find_element(By.ID,'tag_filter_730_2_Type_CSGO_Type_WeaponCase').click()
 
 time.sleep(30)
