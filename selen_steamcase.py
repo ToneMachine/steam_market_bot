@@ -113,14 +113,8 @@ while True:
         driver.find_element(By.PARTIAL_LINK_TEXT,'OK').click()
         time.sleep(3)
         
-        # confirmation
-        try:
-            driver.find_element(By.CLASS_NAME,'btn_grey_steamui btn_medium').click()
-            time.sleep(2)
-
-        except:
-            time.sleep(1)
-            pass
+        # wait for confirmation
+        wait_for(By.ID,'filter_tag_show',120)
 
         # filters
         driver.find_element(By.ID,'filter_tag_show').click()
